@@ -12,7 +12,11 @@ export default function ColorDetail() {
     >
       <p className="text-5xl">{color?.name}</p>
       {color?.combinations.map((combination) => (
-        <Link to={`${combination}`} key={combination} className="p-2">
+        <Link
+          to={`/combination/${combination}`}
+          key={combination}
+          className="p-2"
+        >
           <p className="text-8xl hover:underline leading-none">{combination}</p>
         </Link>
       ))}

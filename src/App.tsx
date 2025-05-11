@@ -8,9 +8,9 @@ function App() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<ColorList />} />
-        <Route path=":colorSlug" element={<ColorDetail />} />
+        <Route path="color/:colorSlug" element={<ColorDetail />} />
         <Route
-          path=":colorSlug/:colorCombinationId"
+          path="combination/:colorCombinationId"
           element={<ColorCombination />}
         />
       </Route>

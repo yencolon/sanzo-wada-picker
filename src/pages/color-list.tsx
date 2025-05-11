@@ -11,7 +11,7 @@ export default function ColorList() {
       : "text-gray-50";
 
     return (
-      <Link key={color.index} to={`/${color.slug}`}>
+      <Link key={color.index} to={`/color/${color.slug}`}>
         <div
           className="h-32 flex justify-center items-center grid-item"
           style={{ backgroundColor: color.hex }}
