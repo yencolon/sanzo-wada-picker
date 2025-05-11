@@ -11,9 +11,13 @@ export default function ColorList() {
       : "text-gray-50";
 
     return (
-      <Link key={color.index} to={`/color/${color.slug}`}>
+      <Link
+        key={color.index}
+        to={`/color/${color.slug}`}
+        className="block aspect-square"
+      >
         <div
-          className="h-32 flex justify-center items-center grid-item"
+          className="w-full h-full flex items-center justify-center"
           style={{ backgroundColor: color.hex }}
         >
           <span className={textColorClass}>{color.name + color.index}</span>

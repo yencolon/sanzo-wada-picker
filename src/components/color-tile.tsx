@@ -2,13 +2,14 @@ import { useCopyToClipboard } from "@uidotdev/usehooks";
 import type { Color } from "../store/colorStore";
 import { isColorLight } from "../utils/color-utils";
 import { useState } from "react";
+import { Link } from "react-router";
 
 interface ColorTileProps {
   color: Color;
 }
 
 const ColorTileComponent = ({ color }: ColorTileProps) => {
-  const [copiedText, copyToClipboard] = useCopyToClipboard();
+  const [_, copyToClipboard] = useCopyToClipboard();
   const [showCopied, setShowCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -24,27 +25,28 @@ const ColorTileComponent = ({ color }: ColorTileProps) => {
     : "text-gray-50";
 
   return (
-    <div
-      className="flex flex-1 justify-center items-center p-2 md:min-h-dvh group relative cursor-pointer"
-      style={{ backgroundColor: color.hex }}
-      onClick={handleCopy}
-    >
-      <span className={`md:invisible md:group-hover:visible ${textColorClass}`}>
-        {color?.name}
-      </span>
-      <span
-        className={`absolute bottom-0 right-0 p-5 text-xl ${textColorClass} `}
-      >
-        {color.hex}
-      </span>
-      {showCopied && (
-        <span
-          className={`absolute top-0 text-center text-xl ${textColorClass}`}
-        >
-          Copied
-        </span>
-      )}
-    </div>
+    <Link to={`/color/${color.slug}`} className="flex flex-1">
+      <div className="flex flex-1 group" style={{ backgroundColor: color.hex }}>
+        <div className="relative flex flex-1 justify-center items-center ">
+          <span
+            className={`md:invisible md:group-hover:visible  ${textColorClass}`}
+          >
+            {color?.name}
+          </span>
+          <span
+            className={`absolute bottom-0 right-1 text-center text-xl${textColorClass} `}
+          >
+            {color.hex}
+          </span>
+          <button
+            onClick={handleCopy}
+            className="absolute top-1 right-1 cursor-pointer border font-semibold border-gray-400 bg-gray-200 w-11 h-11 text-xs rounded-sm hover:bg-gray-50"
+          >
+            {showCopied ? "copied" : "copy"}
+          </button>
+        </div>
+      </div>
+    </Link>
   );
 };
 

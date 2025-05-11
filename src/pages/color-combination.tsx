@@ -6,7 +6,7 @@ export default function ColorCombination() {
   let { colorCombinationId } = useParams();
   const combinations = useCombination(Number(colorCombinationId));
   return (
-    <div className="flex flex-col md:flex-row h-dvh">
+    <div className="flex flex-col flex-1 md:flex-row">
       {combinations.map((color) => (
         <ColorTileComponent color={color} key={color.slug} />
       ))}
