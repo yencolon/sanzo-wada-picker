@@ -12,7 +12,7 @@ export default function ColorList() {
 
     return (
       <Link
-        key={color.index}
+        key={color.slug}
         to={`/color/${color.slug}`}
         className="block aspect-square"
       >
@@ -20,14 +20,16 @@ export default function ColorList() {
           className="w-full h-full flex items-center justify-center"
           style={{ backgroundColor: color.hex }}
         >
-          <span className={textColorClass}>{color.name + color.index}</span>
+          <span className={`text-xl font-semibold ${textColorClass}`}>
+            {color.name}
+          </span>
         </div>
       </Link>
     );
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 w-full m-auto p-5">
+    <div className="grid grid-cols-2 md:grid-cols-5 w-full m-auto">
       {colors.map((color) => colorTile(color))}
     </div>
   );

@@ -25,28 +25,39 @@ const ColorTileComponent = ({ color }: ColorTileProps) => {
     : "text-gray-50";
 
   return (
-    <Link to={`/color/${color.slug}`} className="flex flex-1">
-      <div className="flex flex-1 group" style={{ backgroundColor: color.hex }}>
-        <div className="relative flex flex-1 justify-center items-center ">
+    <div className="flex flex-1 group" style={{ backgroundColor: color.hex }}>
+      <div className="relative flex flex-1 justify-center items-center ">
+        <Link to={`/color/${color.slug}`}>
           <span
-            className={`md:invisible md:group-hover:visible  ${textColorClass}`}
+            className={`md:invisible md:group-hover:visible hover:underline  ${textColorClass}`}
           >
             {color?.name}
           </span>
-          <span
-            className={`absolute bottom-0 right-1 text-center text-xl${textColorClass} `}
-          >
-            {color.hex}
-          </span>
-          <button
-            onClick={handleCopy}
-            className="absolute top-1 right-1 cursor-pointer border font-semibold border-gray-400 bg-gray-200 w-11 h-11 text-xs rounded-sm hover:bg-gray-50"
-          >
-            {showCopied ? "copied" : "copy"}
-          </button>
-        </div>
+        </Link>
+        <span
+          className={`absolute bottom-0 right-1 text-center text-xl ${textColorClass} `}
+        >
+          {color.hex}
+        </span>
+        <button
+          onClick={handleCopy}
+          className={`absolute 
+            top-1
+            right-1 
+            cursor-pointer 
+            font-semibold
+            bg-gray-800/30 
+            hover:bg-gray-400/50 
+            w-11 
+            h-8 
+            text-xs 
+            rounded-sm 
+            ${textColorClass} `}
+        >
+          {showCopied ? "copied" : "copy"}
+        </button>
       </div>
-    </Link>
+    </div>
   );
 };
 
